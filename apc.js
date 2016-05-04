@@ -13,4 +13,20 @@ var displaySentences = function() {
 		reorder_ar[sentences[i]].style.display = 'list-item';
 	}
 }
+
+var updateDates = function (){
+	var target = document.getElementsByClassName('age'),
+		orig_date = new Date('1988-09-30'),
+		today = new Date();
+	for (var i = 0; i < target.length; i++) {
+		target[i].innerHTML = moment(today).diff(moment(orig_date), 'months');
+	}
+
+	target = document.getElementsByTagName('date');
+	for (var i = 0; i < target.length; i++){
+		target[i].innerHTML = 'only ' + Math.abs(moment(new Date()).diff(moment("09-30-"+moment().year(), "MM-DD-YYYY"), 'days')) + ' days more!'
+	}
+}
+
 displaySentences();
+updateDates();
